@@ -4,28 +4,76 @@ extends Node2D
 @onready var label: RichTextLabel = $Label;
 
 var has_won: String = "";
-var turn: String = "x";
+var turn: String = "X";
 
-func _ready():
+func _ready() -> void:
+  setup_board()
+
+# Used to initially setup the game. This can be used to reset the board also.
+func setup_board() -> void:
   for button in buttons:
     button.text = "";
+  
   label.text = "";
+  turn = "X";
+  has_won = "";
+  set_turn_label()
 
+# Takes an id for the button that was pressed and attempts to use that as a turn
 func _on_pressed(id: int) -> void:
+  
+  # If noone has won and the button doesn't already have a mark
   if buttons[id-1].text == "" && has_won == "":
-    buttons[id-1].text = turn;
-    turn = "x" if turn == "o" else "o"
-  check_win()
-
-func check_win():
-  for i in range(3):
-    if buttons[(i*3)+2].text != "" && buttons[(i*3)+0].text == buttons[(i*3)+1].text  && buttons[(i*3)+1].text == buttons[(i*3)+2].text:
-      has_won = buttons[(i*3)+2].text
-      label.text = has_won + " Has won"
-    #print((i*3)+1)
-    #print((i*3)+2)
-    #print((i*3)+3)
     
-    #1, 4, 7
-    #2, 5, 8
-    #3, 6, 9
+    # Set the button to the current turn
+    buttons[id-1].text = turn;
+    
+    # flip the turn
+    turn = "X" if turn == "O" else "O"
+    
+    set_turn_label()
+
+    check_win()
+
+func set_turn_label():
+  # Set the label
+  label.text = "Turn: " + turn
+
+# Checks if there is a win. If there is has_won will be set and the label text will be changed
+func check_win() -> void:
+  # Row win
+  for i in range(3):
+    if (
+        buttons[(i*3)+2].text != ""
+        && buttons[(i*3)+0].text == buttons[(i*3)+1].text
+        && buttons[(i*3)+1].text == buttons[(i*3)+2].text
+      ):
+      has_won = buttons[(i*3)+2].text
+
+  # Column Win
+  for i in range(3):
+    if (
+        buttons[i].text != ""
+        && buttons[i].text == buttons[i+3].text
+        && buttons[i+3].text == buttons[i+6].text
+      ):
+      has_won = buttons[i].text
+
+  # Win via cross
+  if (
+      buttons[4].text != ""
+      && (
+        (
+          buttons[4].text == buttons[0].text
+          && buttons[4].text == buttons[8].text
+        )
+        || (
+          buttons[4].text == buttons[2].text
+          && buttons[4].text == buttons[6].text
+        )
+      )
+    ):
+    has_won = buttons[4].text
+
+  if has_won != "":
+    label.text = has_won + " Has won"

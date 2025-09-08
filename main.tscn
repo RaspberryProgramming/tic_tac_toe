@@ -7,72 +7,79 @@ script = ExtResource("1_ig7tw")
 
 [node name="1" type="Button" parent="."]
 offset_left = 64.0
-offset_top = 64.0
+offset_top = 26.0
 offset_right = 82.0
-offset_bottom = 95.0
+offset_bottom = 57.0
 text = "1"
 
 [node name="2" type="Button" parent="."]
 offset_left = 120.0
-offset_top = 64.0
+offset_top = 26.0
 offset_right = 138.0
-offset_bottom = 95.0
+offset_bottom = 57.0
 text = "2"
 
 [node name="3" type="Button" parent="."]
 offset_left = 176.0
-offset_top = 64.0
+offset_top = 26.0
 offset_right = 194.0
-offset_bottom = 95.0
+offset_bottom = 57.0
 text = "3"
 
 [node name="4" type="Button" parent="."]
 offset_left = 64.0
-offset_top = 112.0
+offset_top = 74.0
 offset_right = 82.0
-offset_bottom = 143.0
+offset_bottom = 105.0
 text = "4"
 
 [node name="5" type="Button" parent="."]
 offset_left = 120.0
-offset_top = 112.0
+offset_top = 74.0
 offset_right = 138.0
-offset_bottom = 143.0
+offset_bottom = 105.0
 text = "5"
 
 [node name="6" type="Button" parent="."]
 offset_left = 176.0
-offset_top = 112.0
+offset_top = 74.0
 offset_right = 194.0
-offset_bottom = 143.0
+offset_bottom = 105.0
 text = "6"
 
 [node name="7" type="Button" parent="."]
 offset_left = 64.0
-offset_top = 160.0
+offset_top = 122.0
 offset_right = 82.0
-offset_bottom = 191.0
+offset_bottom = 153.0
 text = "7"
 
 [node name="8" type="Button" parent="."]
 offset_left = 120.0
-offset_top = 160.0
+offset_top = 122.0
 offset_right = 138.0
-offset_bottom = 191.0
+offset_bottom = 153.0
 text = "8"
 
 [node name="9" type="Button" parent="."]
 offset_left = 176.0
-offset_top = 160.0
+offset_top = 122.0
 offset_right = 194.0
-offset_bottom = 191.0
+offset_bottom = 153.0
 text = "9"
+
+[node name="Reset" type="Button" parent="."]
+offset_left = 104.0
+offset_top = 216.0
+offset_right = 155.0
+offset_bottom = 247.0
+text = "Reset"
 
 [node name="Label" type="RichTextLabel" parent="."]
 offset_left = 64.0
-offset_top = 200.0
+offset_top = 168.0
 offset_right = 192.0
-offset_bottom = 240.0
+offset_bottom = 208.0
 text = "Label"
 
 [connection signal="pressed" from="1" to="." method="_on_pressed" binds= [1]]
@@ -84,3 +91,4 @@ text = "Label"
 [connection signal="pressed" from="7" to="." method="_on_pressed" binds= [7]]
 [connection signal="pressed" from="8" to="." method="_on_pressed" binds= [8]]
 [connection signal="pressed" from="9" to="." method="_on_pressed" binds= [9]]
+[connection signal="pressed" from="Reset" to="." method="setup_board"]
