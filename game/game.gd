@@ -27,12 +27,12 @@ func _on_pressed(id: int) -> void:
     # Set the button to the current turn
     buttons[id-1].text = turn;
   
-  # flip the turn
-  turn = "X" if turn == "O" else "O";
-  
-  set_turn_label();
+    # flip the turn
+    turn = "X" if turn == "O" else "O";
+    
+    set_turn_label();
 
-  check_win();
+    check_win();
 
 func set_turn_label():
   # Set the label
