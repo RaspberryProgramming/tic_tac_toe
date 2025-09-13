@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://cdrb5uyg13m1r"]
 
-[ext_resource type="Script" uid="uid://bs3c8ilhvwip4" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://bs3c8ilhvwip4" path="res://game/game.gd" id="1_80nbo"]
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_ig7tw")
+script = ExtResource("1_80nbo")
 
 [node name="1" type="Button" parent="."]
 custom_minimum_size = Vector2(32, 32)
@@ -90,6 +90,10 @@ offset_top = 184.0
 offset_right = 192.0
 offset_bottom = 208.0
 text = "Label"
+horizontal_alignment = 1
+
+[node name="GameOverTimer" type="Timer" parent="."]
+wait_time = 3.0
 
 [connection signal="pressed" from="1" to="." method="_on_pressed" binds= [1]]
 [connection signal="pressed" from="2" to="." method="_on_pressed" binds= [2]]
@@ -101,3 +105,4 @@ text = "Label"
 [connection signal="pressed" from="8" to="." method="_on_pressed" binds= [8]]
 [connection signal="pressed" from="9" to="." method="_on_pressed" binds= [9]]
 [connection signal="pressed" from="Reset" to="." method="setup_board"]
+[connection signal="timeout" from="GameOverTimer" to="." method="_on_game_over_timer_timeout"]
