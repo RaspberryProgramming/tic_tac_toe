@@ -1,7 +1,7 @@
 extends Control
 
 @onready var main_scene = load("res://game/game.tscn");
-@onready var start_button = $StartButton;
+@onready var start_button = $StartTicTacToeButton;
 
 var current_scene = null;
 

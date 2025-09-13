@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @onready var buttons: Array[Button] = [$"1", $"2", $"3", $"4", $"5", $"6", $"7", $"8", $"9"];
 @onready var label: RichTextLabel = $Label;
@@ -22,7 +22,6 @@ func setup_board() -> void:
 
 # Takes an id for the button that was pressed and attempts to use that as a turn
 func _on_pressed(id: int) -> void:
-  
   # If noone has won and the button doesn't already have a mark
   if buttons[id-1].text == "" && has_won == "":
     # Set the button to the current turn
@@ -77,8 +76,6 @@ func check_win() -> void:
 
   if has_won != "":
    label.text = has_won + " Has won";
-   game_over_timer.start();
 
-
-func _on_game_over_timer_timeout() -> void:
+func _on_exit_pressed() -> void:
   Globals.game_over.emit();

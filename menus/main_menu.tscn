@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cysjrn6m5kja7"]
+[gd_scene load_steps=3 format=3 uid="uid://cysjrn6m5kja7"]
 
 [ext_resource type="Script" uid="uid://yc142m8b3b3y" path="res://menus/main_menu.gd" id="1_8gy84"]
+[ext_resource type="Theme" uid="uid://bkgyxltn61x81" path="res://themes/button_theme.tres" id="2_ij7vn"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,12 +12,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8gy84")
 
-[node name="StartButton" type="Button" parent="."]
+[node name="StartTicTacToeButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 104.0
-offset_top = 112.0
-offset_right = 150.0
-offset_bottom = 143.0
-text = "Start"
+offset_left = 808.0
+offset_top = 528.0
+offset_right = 1112.0
+offset_bottom = 586.0
+theme = ExtResource("2_ij7vn")
+text = "Start Tic Tac Toe"
 
-[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="StartTicTacToeButton" to="." method="_on_start_button_pressed"]
